@@ -147,7 +147,10 @@ This includes the fixed animations and the styling classes used in the React com
 .hero-section {
   min-height: 100vh; /* Equivalent to min-h-screen */
   color: #ffffff; /* Base text color */
-  /* Assumes flex, items-center, relative, overflow-hidden are applied */
+  display: flex;
+  align-items: center; /* This vertically centers the .hero-content-container */
+  position: relative;
+  overflow: hidden;
 }
 
 .text-white-base {
@@ -185,8 +188,8 @@ This includes the fixed animations and the styling classes used in the React com
   padding-right: 1rem; /* px-4 */
   position: relative; /* Equivalent to relative */
   z-index: 10; /* Equivalent to z-10 */
-  padding-top: 5rem; /* py-20 */
-  padding-bottom: 5rem; /* py-20 */
+  padding-top: 2rem; /* py-20 */
+  padding-bottom: 2rem; /* py-20 */
 }
 
 @media (min-width: 640px) { /* sm breakpoint */
