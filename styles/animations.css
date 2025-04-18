@@ -116,3 +116,299 @@
         background-position: 0% 50%;
     }
 }
+
+
+/*
+Add these CSS rules to your standalone CSS file.
+This includes the fixed animations and the styling classes used in the React component above.
+*/
+
+/* Base Styles & Layout Helpers (Adapt existing Tailwind/utility classes if preferred) */
+.text-center { text-align: center; }
+.block { display: block; }
+.relative { position: relative; }
+.absolute { position: absolute; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.overflow-hidden { overflow: hidden; }
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.grid { display: grid; }
+.pointer-events-none { pointer-events: none; }
+
+/* Initial Opacity State */
+.opacity-0-base {
+  opacity: 0;
+}
+
+/* Section Specific Styles */
+.hero-section {
+  min-height: 100vh; /* Equivalent to min-h-screen */
+  color: #ffffff; /* Base text color */
+  /* Assumes flex, items-center, relative, overflow-hidden are applied */
+}
+
+.text-white-base {
+  color: #ffffff;
+}
+
+.tech-pattern {
+  background-color: #0a0a0a; /* Dark background */
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.hero-overlay-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0; /* Ensure it's behind content */
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to bottom, transparent, black);
+  /* Assumes absolute, inset-0 are applied */
+}
+
+.overlay-opacity-60 {
+   opacity: 0.6; /* Equivalent to opacity-60 */
+}
+
+.hero-content-container {
+  max-width: 80rem; /* Equivalent to max-w-7xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  position: relative; /* Equivalent to relative */
+  z-index: 10; /* Equivalent to z-10 */
+  padding-top: 5rem; /* py-20 */
+  padding-bottom: 5rem; /* py-20 */
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+  .hero-content-container {
+    padding-left: 1.5rem; /* sm:px-6 */
+    padding-right: 1.5rem; /* sm:px-6 */
+  }
+}
+
+@media (min-width: 1024px) { /* lg breakpoint */
+  .hero-content-container {
+    padding-left: 2rem; /* lg:px-8 */
+    padding-right: 2rem; /* lg:px-8 */
+  }
+}
+
+/* Text Element Styles */
+.hero-subtitle-accent {
+  color: #2dd4bf; /* Equivalent to text-green-500 (adjust color) */
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75rem;
+  font-weight: 500; /* font-medium */
+  margin-bottom: 1rem; /* mb-4 */
+  display: block; /* block */
+}
+
+.hero-title {
+  font-size: 3rem; /* text-5xl */
+  line-height: 1;
+  font-weight: 700; /* font-bold */
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .hero-title {
+    font-size: 4.5rem; /* md:text-7xl */
+    line-height: 1;
+  }
+}
+
+.hero-title-sub {
+  margin-top: 0.5rem; /* mt-2 */
+  display: block; /* block */
+}
+
+.hero-description {
+  font-size: 1.25rem; /* text-xl */
+  line-height: 1.75rem;
+  color: #d1d5db; /* text-gray-300 */
+  margin-bottom: 3rem; /* mb-12 */
+  max-width: 42rem; /* max-w-2xl */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA Button Styles */
+.hero-cta-container {
+  display: flex; /* flex */
+  justify-content: center; /* justify-center */
+  gap: 1rem; /* space-x-4, use gap for modern browsers */
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+  .hero-cta-container {
+     gap: 1.5rem; /* sm:space-x-6 */
+  }
+}
+
+.cta-button {
+  color: #ffffff;
+  padding: 0.75rem 1.5rem; /* px-6 py-3 */
+  border-radius: 0.5rem; /* rounded-lg */
+  font-size: 1rem; /* text-base */
+  line-height: 1.5rem;
+  font-weight: 500; /* font-medium */
+  display: inline-flex; /* To align icon and text */
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Base transition for hover effects */
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+  .cta-button {
+    padding: 1rem 2rem; /* sm:px-8 sm:py-4 */
+    font-size: 1.125rem; /* sm:text-lg */
+    line-height: 1.75rem;
+  }
+}
+
+.cta-button-secondary {
+  background-color: #1f2937; /* bg-gray-800 */
+  border: 1px solid #374151; /* border border-gray-700 */
+}
+
+.cta-button-secondary:hover {
+  background-color: #374151; /* hover:bg-gray-700 */
+}
+
+.icon-prefix {
+  margin-right: 0.5rem; /* mr-2 */
+}
+
+/* Stats Section Styles */
+.hero-stats-grid {
+  margin-top: 4rem; /* mt-16 */
+  display: grid; /* grid */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* grid-cols-2 */
+  gap: 1rem; /* gap-4 */
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+  .hero-stats-grid {
+     margin-top: 5rem; /* sm:mt-20 */
+     gap: 2rem; /* sm:gap-8 */
+  }
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .hero-stats-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)); /* md:grid-cols-4 */
+  }
+}
+
+.stat-card {
+  text-align: center; /* text-center */
+  padding: 1rem; /* p-4 */
+  background-color: rgba(31, 41, 55, 0.5); /* bg-gray-800/50 */
+  border-radius: 0.5rem; /* rounded-lg */
+  backdrop-filter: blur(4px); /* backdrop-blur-sm, adjust blur amount if needed */
+  -webkit-backdrop-filter: blur(4px); /* Safari */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Base transition for hover effects */
+}
+
+.stat-value {
+  font-size: 1.875rem; /* text-3xl */
+  line-height: 2.25rem;
+  font-weight: 700; /* font-bold */
+}
+
+.stat-label {
+  color: #9ca3af; /* text-gray-400 */
+  margin-top: 0.25rem; /* mt-1 */
+  font-size: 0.875rem; /* text-sm */
+  line-height: 1.25rem;
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+   .stat-label {
+      font-size: 1rem; /* sm:text-base */
+      line-height: 1.5rem;
+   }
+}
+
+
+/* Bottom Fade */
+.hero-bottom-fade {
+  position: absolute; /* absolute */
+  bottom: 0; /* bottom-0 */
+  left: 0; /* left-0 */
+  right: 0; /* right-0 */
+  height: 8rem; /* h-32 */
+  background-image: linear-gradient(to top, black, transparent); /* bg-gradient-to-t */
+  pointer-events: none; /* pointer-events-none */
+}
+
+/* Gradient Utilities (from previous examples) */
+.gradient-text {
+  background: linear-gradient(to right, #34d399, #2dd4bf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.gradient-bg {
+  background-image: linear-gradient(to right, #10b981, #06b6d4);
+}
+
+/* Animations (Fixed with forwards) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards; /* Important! */
+}
+
+.slide-up {
+  animation-name: slideUp;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards; /* Important! */
+}
+
+/* Hover Effects (from your provided CSS, ensure names match classes used) */
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-float:hover {
+  transform: translateY(-5px); /* Adjusted slightly */
+  box-shadow: 0 8px 16px rgba(45, 212, 191, 0.2); /* Example shadow */
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px 5px rgba(45, 212, 191, 0.4); /* Example glow */
+}
+
+/* Error Message Style (Fallback) */
+.error-message {
+  color: #ef4444; /* text-red-500 */
+  text-align: center;
+  padding: 2.5rem; /* p-10 */
+}
+
+/* Ensure Font Awesome is loaded if using <i class="fas ..."> */

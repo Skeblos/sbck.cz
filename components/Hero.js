@@ -1,99 +1,137 @@
+// --- React Component (Hero.js) ---
+// Uses state to add animation classes ('fade-in', 'slide-up')
+// Uses styling classes (e.g., 'gradient-text', 'cta-button', 'stat-card') defined in your CSS file.
+
+import React from 'react';
+
+// Mock reportError function for the example
+const reportError = (error) => {
+  console.error("Reporting error:", error);
+};
+
 function Hero() {
   try {
-      const [isVisible, setIsVisible] = React.useState(false);
+    const [isVisible, setIsVisible] = React.useState(false);
 
-      React.useEffect(() => {
-          setIsVisible(true);
-      }, []);
+    React.useEffect(() => {
+      // Set visibility to true after component mounts to trigger animation
+      // Added a small delay to ensure initial styles apply before animation starts
+       const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 50); // 50ms delay, adjust if needed
 
-      return (
-          <section data-name="hero" className="tech-pattern min-h-screen flex items-center relative overflow-hidden">
-              <div className="absolute inset-0 z-0">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-40"></div>
+      return () => clearTimeout(timer); // Cleanup timer
+    }, []);
+
+    return (
+      // Added base text color class 'text-white-base' (defined in CSS)
+      <section data-name="hero" className="tech-pattern hero-section text-white-base">
+        {/* Adjusted overlay opacity class 'overlay-opacity-60' (defined in CSS) */}
+        <div className="hero-overlay-container">
+          <div className="hero-overlay overlay-opacity-60"></div>
+        </div>
+
+        {/* Content Container - Using layout classes (defined in CSS or Tailwind) */}
+        <div className="hero-content-container">
+          <div className="text-center"> {/* Assumes text-center is available */}
+
+            {/* Subtitle Span - Fade In */}
+            {/* Initial opacity is set by 'opacity-0-base' class */}
+            <div className={`opacity-0-base ${isVisible ? 'fade-in' : ''}`}>
+              {/* Styling via CSS classes */}
+              <span className="hero-subtitle-accent">
+                DevOps & Systémová Administrace
+              </span>
+            </div>
+
+            {/* Main Heading - Fade In (with delay) */}
+            <h1
+              data-name="hero-title"
+              // Initial opacity set by 'opacity-0-base', animation via 'fade-in'
+              className={`hero-title opacity-0-base ${isVisible ? 'fade-in' : ''}`}
+              style={{ animationDelay: '0.2s' }} // Animation delay
+            >
+              Automatizace
+              {/* Gradient text via CSS class */}
+              <span className="gradient-text hero-title-sub">
+                pro Vaši Infrastrukturu
+              </span>
+            </h1>
+
+            {/* Paragraph - Slide Up (with delay) */}
+            <p
+              data-name="hero-subtitle"
+               // Initial opacity set by 'opacity-0-base', animation via 'slide-up'
+              className={`hero-description opacity-0-base ${isVisible ? 'slide-up' : ''}`}
+              style={{ animationDelay: '0.4s' }} // Animation delay
+            >
+              Specializuji se na moderní DevOps řešení, cloud infrastrukturu a automatizaci pro
+              zvýšení efektivity vašeho IT prostředí.
+            </p>
+
+            {/* Call to Action Buttons - Slide Up (with delay) */}
+            <div
+              data-name="hero-cta"
+              // Initial opacity set by 'opacity-0-base', animation via 'slide-up'
+              // Layout via CSS class 'hero-cta-container'
+              className={`hero-cta-container opacity-0-base ${isVisible ? 'slide-up' : ''}`}
+              style={{ animationDelay: '0.6s' }} // Animation delay
+            >
+              {/* Styling and hover effects via CSS classes */}
+              <a href="#contact" className="cta-button gradient-bg hover-scale hover-glow">
+                <i className="fas fa-rocket icon-prefix"></i> {/* Assuming Font Awesome */}
+                Začít Projekt
+              </a>
+              {/* Styling and hover effects via CSS classes */}
+              <a href="#projects" className="cta-button cta-button-secondary hover-float">
+                <i className="fas fa-code icon-prefix"></i> {/* Assuming Font Awesome */}
+                Portfolio
+              </a>
+            </div>
+
+            {/* Stats Section - Slide Up (with delay) */}
+            <div
+              data-name="hero-stats"
+              // Initial opacity set by 'opacity-0-base', animation via 'slide-up'
+              // Layout via CSS class 'hero-stats-grid'
+              className={`hero-stats-grid opacity-0-base ${isVisible ? 'slide-up' : ''}`}
+              style={{ animationDelay: '0.8s' }} // Animation delay
+            >
+              {/* Stat Item - Styling and hover via CSS classes */}
+              <div className="stat-card hover-float">
+                <div className="stat-value gradient-text">5+</div>
+                <div className="stat-label">Let Zkušeností</div>
               </div>
-              
-              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
-                  <div className="text-center">
-                      <div className={`opacity-0 ${isVisible ? 'fade-in' : ''}`}>
-                          <span className="text-green-500 text-lg font-medium mb-4 block">
-                              DevOps & Systémová Administrace
-                          </span>
-                      </div>
-                      
-                      <h1 data-name="hero-title" 
-                          className={`text-5xl md:text-7xl font-bold mb-6 opacity-0 ${
-                              isVisible ? 'fade-in' : ''
-                          }`}
-                          style={{ animationDelay: '0.2s' }}
-                      >
-                          Automatizace
-                          <span className="gradient-text block mt-2">
-                              pro Vaši Infrastrukturu
-                          </span>
-                      </h1>
-                      
-                      <p data-name="hero-subtitle" 
-                          className={`text-xl text-gray-300 mb-12 max-w-2xl mx-auto opacity-0 ${
-                              isVisible ? 'slide-up' : ''
-                          }`}
-                          style={{ animationDelay: '0.4s' }}
-                      >
-                          Specializuji se na moderní DevOps řešení, cloud infrastrukturu a automatizaci pro 
-                          zvýšení efektivity vašeho IT prostředí.
-                      </p>
-                      
-                      <div data-name="hero-cta" 
-                          className={`flex justify-center space-x-6 opacity-0 ${
-                              isVisible ? 'slide-up' : ''
-                          }`}
-                          style={{ animationDelay: '0.6s' }}
-                      >
-                          <a href="#contact" 
-                              className="gradient-bg text-white px-8 py-4 rounded-lg text-lg font-medium hover-scale hover-glow"
-                          >
-                              <i className="fas fa-rocket mr-2"></i>
-                              Začít Projekt
-                          </a>
-                          <a href="#projects" 
-                              className="bg-gray-800 text-white px-8 py-4 rounded-lg text-lg font-medium hover:bg-gray-700 hover-float border border-gray-700"
-                          >
-                              <i className="fas fa-code mr-2"></i>
-                              Portfolio
-                          </a>
-                      </div>
-
-                      <div data-name="hero-stats" 
-                          className={`mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 opacity-0 ${
-                              isVisible ? 'slide-up' : ''
-                          }`}
-                          style={{ animationDelay: '0.8s' }}
-                      >
-                          <div className="text-center p-4 bg-gray-800 rounded-lg hover-float">
-                              <div className="text-3xl font-bold gradient-text">5+</div>
-                              <div className="text-gray-400 mt-1">Let Zkušeností</div>
-                          </div>
-                          <div className="text-center p-4 bg-gray-800 rounded-lg hover-float">
-                              <div className="text-3xl font-bold gradient-text">50+</div>
-                              <div className="text-gray-400 mt-1">Projektů</div>
-                          </div>
-                          <div className="text-center p-4 bg-gray-800 rounded-lg hover-float">
-                              <div className="text-3xl font-bold gradient-text">99%</div>
-                              <div className="text-gray-400 mt-1">Spokojenost</div>
-                          </div>
-                          <div className="text-center p-4 bg-gray-800 rounded-lg hover-float">
-                              <div className="text-3xl font-bold gradient-text">24/7</div>
-                              <div className="text-gray-400 mt-1">Podpora</div>
-                          </div>
-                      </div>
-                  </div>
+               {/* Stat Item */}
+              <div className="stat-card hover-float">
+                <div className="stat-value gradient-text">50+</div>
+                <div className="stat-label">Projektů</div>
               </div>
-              
-              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent"></div>
-          </section>
-      );
+               {/* Stat Item */}
+              <div className="stat-card hover-float">
+                <div className="stat-value gradient-text">99%</div>
+                <div className="stat-label">Spokojenost</div>
+              </div>
+               {/* Stat Item */}
+              <div className="stat-card hover-float">
+                <div className="stat-value gradient-text">24/7</div>
+                <div className="stat-label">Podpora</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Gradient Fade - Styling via CSS classes */}
+        <div className="hero-bottom-fade"></div>
+      </section>
+    );
   } catch (error) {
-      console.error('Hero component error:', error);
+    console.error('Hero component error:', error);
+    // Ensure reportError is defined or handled appropriately
+    if (typeof reportError === 'function') {
       reportError(error);
-      return null;
+    }
+    // Fallback UI
+    return <div className="error-message">Error loading Hero section.</div>;
   }
 }
