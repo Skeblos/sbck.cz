@@ -1,14 +1,3 @@
-// --- React Component (Hero.js) ---
-// Uses state to add animation classes ('fade-in', 'slide-up')
-// Uses styling classes (e.g., 'gradient-text', 'cta-button', 'stat-card') defined in your CSS file.
-
-import React from 'react';
-
-// Mock reportError function for the example
-const reportError = (error) => {
-  console.error("Reporting error:", error);
-};
-
 function Hero() {
   try {
     const [isVisible, setIsVisible] = React.useState(false);
