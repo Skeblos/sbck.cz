@@ -40,10 +40,10 @@ function Hero() {
               className={`hero-title opacity-0-base ${isVisible ? 'fade-in' : ''}`}
               style={{ animationDelay: '0.2s' }} // Animation delay
             >
-              Automatizace
+              Váš
               {/* Gradient text via CSS class */}
               <span className="gradient-text hero-title-sub">
-                pro Vaši Infrastrukturu
+                ICT Specialista
               </span>
             </h1>
 
@@ -54,7 +54,7 @@ function Hero() {
               className={`hero-description opacity-0-base ${isVisible ? 'slide-up' : ''}`}
               style={{ animationDelay: '0.4s' }} // Animation delay
             >
-              Specializuji se na moderní DevOps řešení, cloud infrastrukturu a automatizaci pro
+              Specializuji se na moderní řešení, monitoring infrastruktury a automatizaci pro
               zvýšení efektivity vašeho IT prostředí.
             </p>
 
@@ -67,7 +67,7 @@ function Hero() {
               style={{ animationDelay: '0.6s' }} // Animation delay
             >
               {/* Styling and hover effects via CSS classes */}
-              <a href="#contact" className="cta-button gradient-bg hover-scale hover-glow">
+              <a href="#contact" className="cta-button gradient-bg hover-scale hover-float">
                 <i className="fas fa-rocket icon-prefix"></i> {/* Assuming Font Awesome */}
                 Začít Projekt
               </a>
